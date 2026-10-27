@@ -1,1 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #eef2f6;
+    --panel: #ffffff;
+    --ink: #14263a;
+    --muted: #5a6b7d;
+    --accent: #2f5bea;
+    --accent-dark: #2147c4;
+    --sun: #f2c14e;
+    --line: #d6dde5;
+    --head: "Bricolage Grotesque", "Segoe UI", Arial, sans-serif;
+    --body: "Manrope", "Segoe UI", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--body);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px clamp(20px, 6vw, 80px);
+  }
+  .brand {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: 1.25rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand i {
+    width: 22px; height: 22px;
+    background: var(--accent);
+    border-radius: 50% 50% 50% 4px;
+    display: inline-block;
+  }
+  nav { display: flex; gap: 24px; }
+  nav a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  nav a:hover { color: var(--ink); }
+
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: center;
+    padding: clamp(24px, 5vw, 64px) clamp(20px, 6vw, 80px);
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .hero h1 {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    text-wrap: balance;
+  }
+  .hero h1 span { display: block; color: var(--accent); }
+  .hero p {
+    font-size: 1.125rem;
+    color: var(--muted);
+    max-width: 46ch;
+    margin-bottom: 32px;
+  }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .2s, transform .2s;
+  }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+  .btn.ghost { border: 1.5px solid var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: #fff; }
+
+  .panel {
+    background: var(--panel);
+    border-radius: 20px;
+    padding: clamp(24px, 4vw, 40px);
+    border-top: 6px solid var(--sun);
+    box-shadow: 0 20px 50px rgba(20, 38, 58, .08);
+  }
+  .panel h2 {
+    font-family: var(--head);
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+  .panel > p { color: var(--muted); margin-bottom: 24px; }
+  .steps { list-style: none; counter-reset: step; }
+  .steps li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+  }
+  .steps li::before {
+    content: counter(step);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--accent);
+    font-family: var(--head);
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+  }
+  .steps strong { display: block; }
+  .steps span { color: var(--muted); font-size: .95rem; }
+
+  footer {
+    padding: 24px clamp(20px, 6vw, 80px);
+    color: var(--muted);
+    font-size: .9rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 860px) {
+    main { grid-template-columns: 1fr; }
+    nav { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#"><i></i>Your Company</a>
+  <nav aria-label="Main">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1><span id="greeting">Welcome</span>we're glad you're here.</h1>
+    <p>Everything you need is in one place. Take a look around, start a project, or get in touch with our team. We reply within one business day.</p>
+    <div class="actions">
+      <a class="btn primary" href="#start">Get started</a>
+      <a class="btn ghost" href="#contact">Talk to us</a>
+    </div>
+  </section>
+
+  <aside class="panel" id="start" aria-labelledby="start-title">
+    <h2 id="start-title">Start in three steps</h2>
+    <p>You can be up and running in minutes.</p>
+    <ol class="steps">
+      <li>
+        <div><strong>Create your account</strong><span>Sign up with your email address.</span></div>
+      </li>
+      <li>
+        <div><strong>Set up your profile</strong><span>Add your details and preferences.</span></div>
+      </li>
+      <li>
+        <div><strong>Begin your first project</strong><span>Choose a template or start from scratch.</span></div>
+      </li>
+    </ol>
+  </aside>
+</main>
+
+<footer id="contact">
+  <span>&copy; <span id="year">2026</span> Your Company. All rights reserved.</span>
+  <span>hello@yourcompany.com</span>
+</footer>
+
+<script>
+  (function () {
+    var h = new Date().getHours();
+    var word = h < 12 ? "Good morning," : h < 18 ? "Good afternoon," : "Good evening,";
+    document.getElementById("greeting").textContent = word;
+    document.getElementById("year").textContent = new Date().getFullYear();
+  })();
+</script>
+</body>
+</html>
